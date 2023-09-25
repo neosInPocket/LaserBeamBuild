@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 	[SerializeField] private TutorialScreen _tutor;
 	[SerializeField] private UIHealth _uiHealth; 
 	[SerializeField] private Turret _turret; 
+	[SerializeField] private GameObject turretGO;
 	[SerializeField] private FadeScreen _fadeScreen;
 	[SerializeField] private MainMenuController _mainMenuController;
 	[SerializeField] private GameScreen _gameScreen;
@@ -19,6 +20,7 @@ public class GameController : MonoBehaviour
 	[SerializeField] List<Orb> _orbs;
 	[SerializeField] private GameObject _orbsContainer; 
 	[SerializeField] private int _spawnDelay = 1; 
+	[SerializeField] private GameObject deathZone;
 	public static Sprite[] PlanetsSprites;
 	private float _playDelay;
 	public static int _levelCoins;
@@ -46,6 +48,9 @@ public class GameController : MonoBehaviour
 	public void Initialize()
 	{
 		_isPlaying = false;
+		turretGO.gameObject.SetActive(true);
+		deathZone.gameObject.SetActive(true);
+		
 		GameEventHandler.OnEvent += OnEventHandler;
 		RefreshTurretUpgrades();
 		lives = maxLives;
@@ -121,6 +126,7 @@ public class GameController : MonoBehaviour
 	{
 		_fadeScreen.Fade();
 		_fadeScreen.OnFadeEnd += OnFadeMainMenuEnd;
+		
 	}
 	
 	private void OnFadeMainMenuEnd()

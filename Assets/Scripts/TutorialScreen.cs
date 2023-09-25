@@ -9,6 +9,8 @@ public class TutorialScreen : MonoBehaviour
 	[SerializeField] private TMP_Text _text;
 	[SerializeField] private Image deathZoneArrow; 
 	[SerializeField] private Image turretArrow;
+	[SerializeField] private Image character;
+	[SerializeField] private Image back;	
 	
 	public void PlayTutor()
 	{
@@ -19,6 +21,8 @@ public class TutorialScreen : MonoBehaviour
 	{
 		_text.text = "Welcome to Laser Beam!";
 		_text.gameObject.SetActive(true);
+		back.gameObject.SetActive(true);
+		character.gameObject.SetActive(true);
 		yield return new WaitForSeconds(3);
 		
 		_text.GetComponent<Animator>().SetTrigger("Hide");
@@ -55,5 +59,6 @@ public class TutorialScreen : MonoBehaviour
 		
 		_text.GetComponent<Animator>().SetTrigger("Hide");
 		yield return new WaitForSeconds(0.2f);
+		gameObject.SetActive(false);
 	}
 }

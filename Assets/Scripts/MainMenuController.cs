@@ -11,6 +11,8 @@ public class MainMenuController : MonoBehaviour
 	[SerializeField] private ShopScreen _shopScreen;
 	[SerializeField] private GameController _gameController; 
 	[SerializeField] private MainMenuScreen _menuScreen;
+	[SerializeField] private GameObject turretGO;
+	[SerializeField] private GameObject deathZone;
 	
 	public static int CurrentLevel { get; set; } = 0;
 	public static int Coins { get; set; } = 0;
@@ -20,7 +22,8 @@ public class MainMenuController : MonoBehaviour
 	
 	public void Initialize()
 	{
-		
+		turretGO.gameObject.SetActive(false);
+		deathZone.gameObject.SetActive(false);
 		
 		SaveLoad.Load();
 		_menuScreen.gameObject.SetActive(true);
